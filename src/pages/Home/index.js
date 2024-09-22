@@ -1,17 +1,20 @@
 import React, {useState} from 'react'
-import { View, Text, StyleSheet, TextInput, Switch } from 'react-native'
+import { View, Text, StyleSheet, TextInput, Switch, Image } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import AntDesign from 'react-native-vector-icons/AntDesign'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { TouchableOpacity } from 'react-native'
+import imagem from '../../img/logo.png'
 
 export default function App(){
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
     return(
         <View style={styles.container}>
-            <Text style={styles.logo}>
-                Logo
-            </Text>
+            <Image
+                style={styles.logo}
+                source={require('../../img/logo.png')}
+            />
             <Text style={styles.title}>Bem Vindo</Text>
             <View style={styles.viewInput}>
             <MaterialCommunityIcons style={styles.icon} name='email-outline' color={'#CCC'} size={25}/>
@@ -28,23 +31,34 @@ export default function App(){
                 secureTextEntry={true}
                 />
             </View>
+            <TouchableOpacity style={styles.btnEntrar}>
+                <Text style={styles.btnEntrarTxt}>ENTRAR</Text>
+            </TouchableOpacity>
             <View style={styles.viewLogin}>
-                <Text>Esqueceu a senha</Text>
+                <Text style={styles.txtColor}>Esqueceu a senha</Text>
 
                 <View style={styles.switchView}>
                     <Switch
-                    style={{paddingBottom: -15, backgroundColor: 'blue'}}
                         trackColor={{false: '#767577', true: '#767577'}}
                         thumbColor={isEnabled ? 'green' : '#f4f3f4'}
                         onValueChange={toggleSwitch}
                         value={isEnabled}
                         />
-                        <Text style={{ paddingTop: 0}}>Lembrar</Text>
+                        <Text style={styles.txtColor}>Lembrar-me</Text>
                 </View>
             </View>
-            <TouchableOpacity style={styles.btnEntrar}>
-                <Text>Entrar</Text>
-            </TouchableOpacity>
+            <View style={styles.alternativeTxt}>
+                <Text style={styles.txtColor}>______________</Text>
+                <Text style={styles.txtColor}>ou entre com</Text>
+                <Text style={styles.txtColor}>______________</Text>
+            </View>
+            <View style={styles.containerBtn}>
+                <TouchableOpacity style={styles.btnGoogle}>
+                    <AntDesign name='google' color={'#fff'} size={30} style={{marginRight:5}}/>
+                    <Text style={styles.btnEntrarTxt}>Google</Text>
+                </TouchableOpacity>
+                <Text style={styles.txtSign}>Não tem uma conta? <Text style={styles.txtSignLink}>CRIAR CONTA</Text></Text>
+            </View>
             
         </View>
     )
@@ -53,13 +67,14 @@ export default function App(){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // backgroundColor: 'blue',
         padding: 30
     },
     logo: {
-        backgroundColor: 'red',
-        width: '100%',
-        height: '30%'
+        width: 200, // Ajuste o tamanho de acordo com o que achar melhor
+        height: 200,
+        alignSelf: 'center', // Centraliza horizontalmente
+        marginBottom: 20, // Adiciona espaço abaixo do logo
+        resizeMode: 'contain', // Garante que o logo não seja esticado
     },
     viewInput: {
         flexDirection: 'row',
@@ -67,7 +82,6 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         borderColor: '#CCC',
         marginVertical: 5,
-        backgroundColor: 'yellow'
     },
     icon: {
         paddingVertical: 10,
@@ -84,20 +98,53 @@ const styles = StyleSheet.create({
         fontWeight: '600'
     },
     btnEntrar: {
+        marginTop: 10,
         backgroundColor: 'green',
         borderRadius: 15,
         paddingVertical: 15,
-        alignItems: 'center'
+        alignItems: 'center',
+    },
+    btnEntrarTxt:{
+        color: '#fff',
+        fontWeight: '600',
     },
     viewLogin: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: 'red'
     },
     switchView: {
         flexDirection: 'row',
         alignItems: 'center'
-        // justifyContent: 'center'
+    },
+    alternativeTxt:{
+        marginTop: 30,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    txtColor: {
+        color: 'green'
+    },
+    btnGoogle: {
+        backgroundColor: 'green',
+        flexDirection: 'row',
+        width: '50%',
+        justifyContent: 'center',
+        borderRadius: 15,
+        padding: 5,
+        alignItems: 'center',
+        marginTop: 10
+    },
+    containerBtn: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    txtSign: {
+        color: 'green',
+        marginTop: 20
+    },
+    txtSignLink: {
+        // color: 'blue',
+        fontWeight: 'bold'
     }
 })
