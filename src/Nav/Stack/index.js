@@ -12,7 +12,7 @@ export default function App(){
             <Stack.Navigator>
                 <Stack.Screen name='Home' component={Home} options={{headerShown: false}}/>
                 <Stack.Screen name='Reset' component={Reset} options={{title: 'Mudar Senha', headerTintColor: 'green'}}/>
-                <Stack.Screen name='SignUp' component={SignUp}/>
+                <Stack.Screen name='SignUp' component={SignUp} options={{title: 'Criar Conta', headerTintColor: 'green'}}/>
             </Stack.Navigator>
         </NavigationContainer>
     )

@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Alert } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import SignIn from '../../components/signIn'
+import Logo from '../../components/logo'
 
 export default function ({navigation}){
     const [email, setEmail] = useState('')
@@ -18,10 +19,11 @@ export default function ({navigation}){
     }
     return(
         <View style={styles.container}>
-            <Image
+            <Logo/>
+            {/* <Image
                 style={styles.logo}
                 source={require('../../img/logo.png')}
-            />
+            /> */}
             <Text style={styles.title}>Mudar Senha</Text>
             {campoObrigatorio
             ?

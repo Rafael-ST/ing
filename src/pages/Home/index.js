@@ -6,16 +6,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { TouchableOpacity } from 'react-native'
 import imagem from '../../img/logo.png'
 import SignIn from '../../components/signIn'
+import Logo from '../../components/logo'
 
 export default function App({navigation}){
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
     return(
         <View style={styles.container}>
-            <Image
-                style={styles.logo}
-                source={require('../../img/logo.png')}
-            />
+            <Logo/>
             <Text style={styles.title}>Bem Vindo</Text>
             <View style={styles.viewInput}>
             <MaterialCommunityIcons style={styles.icon} name='email-outline' color={'#CCC'} size={25}/>
