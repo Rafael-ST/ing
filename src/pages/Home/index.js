@@ -11,26 +11,36 @@ import Logo from '../../components/logo'
 export default function App({navigation}){
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+    const [senhaVisivel, setSenhaVisivel] = useState(false)
+
     return(
         <View style={styles.container}>
             <Logo/>
-            <Text style={styles.title}>Bem Vindo</Text>
+            <Text style={styles.title}>Bem-Vindo</Text>
             <View style={styles.viewInput}>
             <MaterialCommunityIcons style={styles.icon} name='email-outline' color={'#CCC'} size={25}/>
             <TextInput
                 style={styles.input}
                 placeholder='Email'
+                keyboardType="email-address"
+                autoCapitalize="none"
                 />
             </View>
             <View style={styles.viewInput}>
-            <Ionicons  style={styles.icon} name='lock-open-outline' color={'#CCC'} size={25}/>
-            <TextInput
-                style={{ width: '90%', padding: 10}}
-                placeholder='Senha'
-                secureTextEntry={true}
-                />
+                <Ionicons  style={styles.icon} name='lock-open-outline' color={'#CCC'} size={25}/>
+                <TextInput
+                    style={{ width: '80%', padding: 10}}
+                    placeholder='Senha'
+                    secureTextEntry={!senhaVisivel}
+                    />
+                <MaterialCommunityIcons
+                style={styles.icon}
+                name={senhaVisivel? 'eye-outline' : 'eye-off-outline'}
+                color={'#CCC'}
+                size={25}
+                onPress={() => setSenhaVisivel(!senhaVisivel)} />
             </View>
-            <TouchableOpacity style={styles.btnEntrar}>
+            <TouchableOpacity style={styles.btnEntrar} onPress={() => navigation.navigate('Principal')}>
                 <Text style={styles.btnEntrarTxt}>ENTRAR</Text>
             </TouchableOpacity>
             <View style={styles.viewLogin}>
@@ -77,7 +87,8 @@ const styles = StyleSheet.create({
         paddingLeft: 5
     },
     input: {
-        width: '90%',
+        // width: '90%',
+        flex: 1,
         paddingVertical: 10,
         paddingLeft: 10
     },

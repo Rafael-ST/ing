@@ -6,7 +6,7 @@ export default function Logo(){
         <View>
             <Image
                 style={styles.logo}
-                source={require('../img/logo.png')}
+                source={require('../img/Huawei_logo.png')}
             />
         </View>
     )

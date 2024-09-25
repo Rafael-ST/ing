@@ -34,7 +34,7 @@ export default function ({navigation}){
         >
         <ScrollView  style={styles.container}>
             <Logo/>
-            <Text style={styles.title}>Criação de Conta</Text>
+            <Text style={styles.title}>Crie sua Conta</Text>
             {campoObrigatorio && (
           <Text style={styles.txtObrigatorio}>Por favor, preencha todos os campos*</Text>
         )}
