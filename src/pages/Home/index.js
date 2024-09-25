@@ -5,8 +5,9 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { TouchableOpacity } from 'react-native'
 import imagem from '../../img/logo.png'
+import SignIn from '../../components/signIn'
 
-export default function App(){
+export default function App({navigation}){
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
     return(
@@ -35,7 +36,7 @@ export default function App(){
                 <Text style={styles.btnEntrarTxt}>ENTRAR</Text>
             </TouchableOpacity>
             <View style={styles.viewLogin}>
-                <Text style={styles.txtColor}>Esqueceu a senha</Text>
+                <Text style={styles.txtColor} onPress={() => navigation.navigate('Reset')}>Esqueceu a senha</Text>
 
                 <View style={styles.switchView}>
                     <Switch
@@ -47,18 +48,7 @@ export default function App(){
                         <Text style={styles.txtColor}>Lembrar-me</Text>
                 </View>
             </View>
-            <View style={styles.alternativeTxt}>
-                <Text style={styles.txtColor}>______________</Text>
-                <Text style={styles.txtColor}>ou entre com</Text>
-                <Text style={styles.txtColor}>______________</Text>
-            </View>
-            <View style={styles.containerBtn}>
-                <TouchableOpacity style={styles.btnGoogle}>
-                    <AntDesign name='google' color={'#fff'} size={30} style={{marginRight:5}}/>
-                    <Text style={styles.btnEntrarTxt}>Google</Text>
-                </TouchableOpacity>
-                <Text style={styles.txtSign}>Não tem uma conta? <Text style={styles.txtSignLink}>CRIAR CONTA</Text></Text>
-            </View>
+            <SignIn/>
             
         </View>
     )
@@ -67,7 +57,8 @@ export default function App(){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 30
+        padding: 30,
+        backgroundColor: '#fff'
     },
     logo: {
         width: 200, // Ajuste o tamanho de acordo com o que achar melhor
@@ -117,34 +108,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center'
     },
-    alternativeTxt:{
-        marginTop: 30,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
     txtColor: {
         color: 'green'
     },
-    btnGoogle: {
-        backgroundColor: 'green',
-        flexDirection: 'row',
-        width: '50%',
-        justifyContent: 'center',
-        borderRadius: 15,
-        padding: 5,
-        alignItems: 'center',
-        marginTop: 10
-    },
-    containerBtn: {
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    txtSign: {
-        color: 'green',
-        marginTop: 20
-    },
-    txtSignLink: {
-        // color: 'blue',
-        fontWeight: 'bold'
-    }
 })

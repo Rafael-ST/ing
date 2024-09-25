@@ -1,10 +1,10 @@
 import React from 'react'
-import Home from './src/pages/Home/'
+import Stack from './src/Nav/Stack/'
 
 
 export default function App() {
   return (
-    <Home/>
+    <Stack/>
   )
 }
 
